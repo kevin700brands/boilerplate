@@ -40,7 +40,7 @@ module.exports = {
   },
   plugins: [...HtmlWebpackPlugins],
   output: {
-    publicPath: "./build/js/",
+    publicPath: __dirname + "/build",
     filename: "bundle.js",
     path: path.resolve(__dirname, "build"),
   },
