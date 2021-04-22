@@ -36,12 +36,26 @@ module.exports = {
         test: /\.scss$/,
         use: ["style-loader", "css-loader", "sass-loader"],
       },
+      {
+        test: /\.html$/,
+        use: ["html-loader"],
+      },
+      {
+        test: /\.(svg|png|jpg|jpe?g|gif)$/,
+        use: {
+          loader: "file-loader",
+          options: {
+            name: "[name].[hash].[ext]",
+            outputPath: "images",
+            publicPath: "images",
+          },
+        },
+      },
     ],
   },
   plugins: [...HtmlWebpackPlugins],
   output: {
-    publicPath: __dirname + "/build",
-    filename: "bundle.js",
+    filename: "js/[name].[hash].bundle.js",
     path: path.resolve(__dirname, "build"),
   },
   resolve: {
